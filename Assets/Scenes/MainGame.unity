@@ -652,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
   isHoldingInput: 0
+  pressInput: 0
 --- !u!1 &1166887641
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,22 +912,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fruits:
-  - {fileID: 7210231009607014550, guid: 78979c46e086c8c4d94fab7810dc028e, type: 3}
-  - {fileID: 5211882139861590563, guid: 1834d07b0f6651b458190f8488bdf1c2, type: 3}
-  - {fileID: 5349462121732225741, guid: c5047394ff45ab04da97172ce5701c03, type: 3}
-  - {fileID: 3562603877519482689, guid: dc5bf5cc4d436584b98c3bc55f198ad1, type: 3}
-  - {fileID: 330773634639683224, guid: 6491b6b8a7b78314b96c7c5e864371e2, type: 3}
-  - {fileID: 5864138919072109915, guid: be1c6f2381d410549970bbc63f0405df, type: 3}
-  - {fileID: 588598301118571047, guid: 143149e3cf7644642bba6d853558e136, type: 3}
-  - {fileID: 679582280119165005, guid: 52413a3810ae0c64eaf266d2c6c02a27, type: 3}
-  - {fileID: 4069680008893253646, guid: 50f879e17aee92547886fd172c24d379, type: 3}
-  - {fileID: 1590867380902155773, guid: eaebfe6cc79af774d82eeea1c6b8802a, type: 3}
-  - {fileID: 8672961444845563244, guid: 132d7f87dac10aa4bad553a3f4ec3696, type: 3}
+  - {fileID: 1982016154406514652, guid: dc89b60c24086aa4db3b49bbe808b57b, type: 3}
+  - {fileID: 1412539195070213158, guid: a9f703d1b658d8547a23c1e910fc3531, type: 3}
+  - {fileID: 3778535437462163742, guid: d220b3949fd153f41b8bb7ea882ad62e, type: 3}
+  - {fileID: 6599867210072002523, guid: 485a4bf22ba64264caa1eda3e8c8fdc6, type: 3}
+  - {fileID: 1800776852734114031, guid: c08dff54bb57e224b816316a0427f5de, type: 3}
+  - {fileID: 2707730393461973246, guid: 6f257323e4b6d074682aa65f75e0c8e3, type: 3}
+  - {fileID: 8247254728166875392, guid: 91c89c34fb7182d46b4e3de772f28e68, type: 3}
+  - {fileID: 298270115286140198, guid: 31536cfda3825464f978bbf28db24e29, type: 3}
+  - {fileID: 1942209320251193372, guid: 2b44767771e5aff4dbb5f5703ade08af, type: 3}
+  - {fileID: 4180906183132836804, guid: 98e2098d0871a3042b0a1b495e74fb3c, type: 3}
+  - {fileID: 8290608349815998967, guid: 183894d12963fd44a9ba8aa4525790dc, type: 3}
   NoPhysicsFruits:
   - {fileID: 6942373019702994136, guid: 91eb515f9ea66f54cb8aa7606802de6a, type: 3}
   - {fileID: 5615727679123378554, guid: 1d70a512203724649b279bfdccc32e24, type: 3}
   - {fileID: 197063000809054800, guid: 72d7dd6d6c2531941bc0cf37ef70322b, type: 3}
   - {fileID: 4862395303350836626, guid: 84d4353b283814847972b9c6d6be5765, type: 3}
+  - {fileID: 7051802627533969193, guid: c9ee2eb71b9ff6f48a59af4a988d2908, type: 3}
+  - {fileID: 9045061349425039645, guid: 0085efb8c153b654ab87b20a5e6b2f49, type: 3}
+  - {fileID: 4792336025666261540, guid: bae7c73f8dc45004f86fcf93aab76cf7, type: 3}
+  - {fileID: 5445197939143694745, guid: 7c696e93a05718e49ae8c8921923f798, type: 3}
+  - {fileID: 2875296220337219415, guid: 969279cda7b26574d94eb343322fe8bf, type: 3}
+  - {fileID: 5178304803676739574, guid: 4efac7d37e110ce4ab2ca7265e79612d, type: 3}
+  - {fileID: 8340673881742746200, guid: 05128c2eaa978ff45855b24621658998, type: 3}
   HighestStartingIndex: 3
   _nextFruitImage: {fileID: 1166887643}
   _fruitSprites:

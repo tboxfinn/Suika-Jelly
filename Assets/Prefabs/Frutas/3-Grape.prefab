@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FruitIndex: 2
   PointsWhenAnnihilated: 10
-  FruitMass: 1.45
+  FruitMass: 1.4
 --- !u!114 &2603979046823467721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +207,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ae6b1cc99063344a8e4e6ee5e86397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loosingLayer:
-    serializedVersion: 2
-    m_Bits: 128
