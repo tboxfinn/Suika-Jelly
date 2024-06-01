@@ -18,7 +18,7 @@ public class ThrowFruitController : MonoBehaviour
 
     public Bounds Bounds;
 
-    private const float EXTRA_WIDTH = 0.02f;
+    private const float EXTRA_WIDTH = 0.03f;
 
     public bool CanThrow = false;
 
@@ -28,12 +28,6 @@ public class ThrowFruitController : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -45,7 +39,7 @@ public class ThrowFruitController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInputManager.instance.isHoldingInput && CanThrow)
+        if (PlayerInputManager.instance.pressInput && CanThrow)
         {
             SpriteIndex index = CurrentFruit.GetComponent<SpriteIndex>();
             Quaternion rot = CurrentFruit.transform.rotation;
@@ -56,6 +50,7 @@ public class ThrowFruitController : MonoBehaviour
             Destroy(CurrentFruit);
 
             CanThrow = false;
+            PlayerInputManager.instance.pressInput = false;
         }
         
     }

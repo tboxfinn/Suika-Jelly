@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3ba6d41-dc0c-483a-9d87-04b9949ddf18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -134,6 +143,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Hold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10e2773f-40b1-4315-a67b-6aa27d3ee592"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -144,6 +164,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
         m_PlayerMovement_Hold = m_PlayerMovement.FindAction("Hold", throwIfNotFound: true);
+        m_PlayerMovement_MousePress = m_PlayerMovement.FindAction("MousePress", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,12 +228,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Move;
     private readonly InputAction m_PlayerMovement_Hold;
+    private readonly InputAction m_PlayerMovement_MousePress;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputAction @Hold => m_Wrapper.m_PlayerMovement_Hold;
+        public InputAction @MousePress => m_Wrapper.m_PlayerMovement_MousePress;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -228,6 +251,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Hold.started += instance.OnHold;
             @Hold.performed += instance.OnHold;
             @Hold.canceled += instance.OnHold;
+            @MousePress.started += instance.OnMousePress;
+            @MousePress.performed += instance.OnMousePress;
+            @MousePress.canceled += instance.OnMousePress;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -238,6 +264,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Hold.started -= instance.OnHold;
             @Hold.performed -= instance.OnHold;
             @Hold.canceled -= instance.OnHold;
+            @MousePress.started -= instance.OnMousePress;
+            @MousePress.performed -= instance.OnMousePress;
+            @MousePress.canceled -= instance.OnMousePress;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -259,5 +288,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
+        void OnMousePress(InputAction.CallbackContext context);
     }
 }

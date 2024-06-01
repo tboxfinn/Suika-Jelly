@@ -48,7 +48,10 @@ public class FruitSelector : MonoBehaviour
 
         if (randomIndex < Fruits.Length)
         {
-            GameObject nextFruit = NoPhysicsFruits[randomIndex];  
+            GameObject nextFruit = NoPhysicsFruits[randomIndex];
+            NextFruit = nextFruit;
+
+            _nextFruitImage.sprite = _fruitSprites[randomIndex];
         }
     }
 }

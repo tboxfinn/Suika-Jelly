@@ -12,6 +12,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("Player Movement Inputs")]
     public Vector2 movementInput;
     public bool isHoldingInput = false;
+    public bool pressInput = false;
 
     private void Awake()
     {
@@ -41,6 +42,9 @@ public class PlayerInputManager : MonoBehaviour
         {
             playerControls = new PlayerControls();
             playerControls.PlayerMovement.Move.performed += i => movementInput = i.ReadValue<Vector2>();
+
+            //PRESS
+            playerControls.PlayerMovement.MousePress.performed += i => pressInput = true;
 
             //HOLDS
             playerControls.PlayerMovement.Hold.performed += i => isHoldingInput = true;
