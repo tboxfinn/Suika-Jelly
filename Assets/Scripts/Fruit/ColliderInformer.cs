@@ -8,7 +8,7 @@ public class ColliderInformer : MonoBehaviour
 
     private bool _hasCollided;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (!_hasCollided && !WasCombinedIn)
         {

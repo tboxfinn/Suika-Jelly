@@ -16,7 +16,7 @@ public class ThrowFruitController : MonoBehaviour
     private Rigidbody2D _rb;
     private CircleCollider2D _circleCollider;
 
-    public Bounds _bounds;
+    public Bounds Bounds;
 
     private const float EXTRA_WIDTH = 0.02f;
 
@@ -65,7 +65,7 @@ public class ThrowFruitController : MonoBehaviour
         GameObject go = Instantiate(fruit, _fruitTransform);
         CurrentFruit = go;
         _circleCollider = CurrentFruit.GetComponent<CircleCollider2D>();
-        _bounds = _circleCollider.bounds;
+        Bounds = _circleCollider.bounds;
 
         _playerController.ChangeBoundary(EXTRA_WIDTH);
     }

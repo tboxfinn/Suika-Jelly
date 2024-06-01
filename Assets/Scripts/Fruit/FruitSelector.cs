@@ -22,12 +22,6 @@ public class FruitSelector : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -54,7 +48,7 @@ public class FruitSelector : MonoBehaviour
 
         if (randomIndex < Fruits.Length)
         {
-            GameObject nextFruit = Fruits[randomIndex];  
+            GameObject nextFruit = NoPhysicsFruits[randomIndex];  
         }
     }
 }

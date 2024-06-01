@@ -527,7 +527,7 @@ MonoBehaviour:
   _fruitTransform: {fileID: 1692546504}
   _parentAfterThrow: {fileID: 1218304342}
   _Selector: {fileID: 1218304343}
-  _bounds:
+  Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   CanThrow: 1
