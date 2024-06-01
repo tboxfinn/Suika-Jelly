@@ -347,9 +347,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726309362}
+  - component: {fileID: 726309363}
   - component: {fileID: 726309364}
   - component: {fileID: 726309365}
-  - component: {fileID: 726309363}
+  - component: {fileID: 726309366}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -442,18 +443,18 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
+      key1: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+      key2: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
+      key3: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
-      ctime3: 0
+      ctime2: 65535
+      ctime3: 65535
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -467,7 +468,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -510,6 +511,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitThrowTransform: {fileID: 1692546504}
   _bottomTransform: {fileID: 718424819}
+--- !u!114 &726309366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726309361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b7be109b71f4441a97fec9665705f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentFruit: {fileID: 0}
+  _fruitTransform: {fileID: 1692546504}
+  _parentAfterThrow: {fileID: 1218304342}
+  _Selector: {fileID: 1218304343}
+  _bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  CanThrow: 1
 --- !u!1 &1142946971
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +589,7 @@ GameObject:
   - component: {fileID: 1166887644}
   - component: {fileID: 1166887643}
   m_Layer: 5
-  m_Name: NextImageHolder
+  m_Name: NextFruitImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,6 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218304342}
+  - component: {fileID: 1218304343}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -800,6 +822,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1218304343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218304341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537483134f92a4c4e877215e64b08da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fruits:
+  - {fileID: 7210231009607014550, guid: 78979c46e086c8c4d94fab7810dc028e, type: 3}
+  - {fileID: 5349462121732225741, guid: c5047394ff45ab04da97172ce5701c03, type: 3}
+  - {fileID: 3562603877519482689, guid: dc5bf5cc4d436584b98c3bc55f198ad1, type: 3}
+  - {fileID: 5211882139861590563, guid: 1834d07b0f6651b458190f8488bdf1c2, type: 3}
+  NoPhysicsFruits:
+  - {fileID: 6942373019702994136, guid: 91eb515f9ea66f54cb8aa7606802de6a, type: 3}
+  - {fileID: 197063000809054800, guid: 72d7dd6d6c2531941bc0cf37ef70322b, type: 3}
+  - {fileID: 4862395303350836626, guid: 84d4353b283814847972b9c6d6be5765, type: 3}
+  - {fileID: 5615727679123378554, guid: 1d70a512203724649b279bfdccc32e24, type: 3}
+  HighestStartingIndex: 3
+  _nextFruitImage: {fileID: 1166887643}
+  _fruitSprites:
+  - {fileID: 21300000, guid: b8803e3111ac24a5b958e1a50b843672, type: 3}
+  - {fileID: 21300000, guid: a41d0dc9b6e4f4f87a17a32905bda747, type: 3}
+  - {fileID: 21300000, guid: 66c04c13819ec4335bed9bf74e5aca59, type: 3}
+  - {fileID: 21300000, guid: 733580e851c7d4b05b352a5912276307, type: 3}
+  - {fileID: 21300000, guid: cee3f04076a58452cafeee88c3411268, type: 3}
+  - {fileID: 21300000, guid: 44330e28611b742a19c8c93d4af160df, type: 3}
+  - {fileID: 21300000, guid: f3003d3d94b6a469ca34cc39cef41af1, type: 3}
+  - {fileID: 21300000, guid: 3cb10cd2fb3184fcd9bda513c82f6c6b, type: 3}
+  - {fileID: 21300000, guid: 169acee6041fa48b9af4b7282f76cc13, type: 3}
+  NextFruit: {fileID: 0}
 --- !u!1 &1458360062
 GameObject:
   m_ObjectHideFlags: 0

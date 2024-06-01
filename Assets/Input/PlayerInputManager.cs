@@ -11,7 +11,7 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("Player Movement Inputs")]
     public Vector2 movementInput;
-    [SerializeField] bool isHoldingInput = false;
+    public bool isHoldingInput = false;
 
     private void Awake()
     {
@@ -43,8 +43,8 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.Move.performed += i => movementInput = i.ReadValue<Vector2>();
 
             //HOLDS
-            playerControls.PlayerMovement.Move.performed += i => isHoldingInput = true;
-            playerControls.PlayerMovement.Move.canceled += i => isHoldingInput = false;
+            playerControls.PlayerMovement.Hold.performed += i => isHoldingInput = true;
+            playerControls.PlayerMovement.Hold.canceled += i => isHoldingInput = false;
         }
     }
 }
