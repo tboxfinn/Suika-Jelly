@@ -4,19 +4,24 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public GameState State;
+
+    public static event Action<GameState> OnGameStateChanged;
 
     public int CurrentScore;
     public int FinalScore;
 
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _finalScoreText;
+    [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private Image FadePanel;
     [SerializeField] private float _fadeTime = 2f;
-    [SerializeField] private GameObject _gameOverPanel;
 
     public float TimeTillGameOver = 1.5f;
 
@@ -25,9 +30,20 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += FadeGame;
     }
 
+
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= FadeGame;
+    }
+
+    private void OnDestroy()
+    {
+        OnGameStateChanged -= GameManagerOnStateChanged;
+    }
+
+    private void GameManagerOnStateChanged(GameState state)
+    {
+        _gameOverPanel.SetActive(state == GameState.GameOver);
     }
 
     private void Awake()
@@ -39,6 +55,32 @@ public class GameManager : MonoBehaviour
 
         _gameOverPanel.SetActive(false);
         _scoreText.text = CurrentScore.ToString("0");
+        OnGameStateChanged += GameManagerOnStateChanged;
+       
+    }
+
+    private void Start()
+    {
+        UpdateGameState(GameState.Playing);
+        CurrentScore = 0;
+        FinalScore = 0;
+    }
+
+    public void UpdateGameState(GameState newState)
+    {
+        State = newState;
+
+        switch (newState)
+        {
+            case GameState.Playing:
+                break;
+            case GameState.GameOver:
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException();
+        }
+
+        OnGameStateChanged?.Invoke(newState);
     }
 
 #region Recompensas
@@ -52,12 +94,14 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int amount)
     {
         CurrentScore += amount;
+        FinalScore = CurrentScore;
         _scoreText.text = CurrentScore.ToString("0");
+        _finalScoreText.text = FinalScore.ToString("0");
     }
 
     public void GameOver()
     {
-        _gameOverPanel.SetActive(true);
+        UpdateGameState(GameState.GameOver);
     }
 
     public void ResetGame()
@@ -114,4 +158,10 @@ public class GameManager : MonoBehaviour
 
         FadePanel.gameObject.SetActive(false);
     }
+}
+
+public enum GameState
+{
+    Playing,
+    GameOver
 }

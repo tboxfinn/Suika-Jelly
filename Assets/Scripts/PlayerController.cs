@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,9 +30,18 @@ public class PlayerController : MonoBehaviour
 
         _startingLeftBound = _leftBound;
         _startingRightBound = _rightBound;
+
     }
 
     private void Update()
+    {
+        if (GameManager.instance.State == GameState.GameOver)
+            return;
+            
+        HandleMovement();
+    }
+
+    public void HandleMovement()
     {
         Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movementInput.x * _moveSpeed * Time.deltaTime, 0, 0);
         newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);

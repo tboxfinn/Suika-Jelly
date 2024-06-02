@@ -818,6 +818,7 @@ MonoBehaviour:
   idAnunciosAndroid: Rewarded_Android
   idAnunciosIOS: Rewarded_iOS
   modoPruebas: 1
+  tipoRecompensaSeleccioanda: 0
 --- !u!4 &689071997
 Transform:
   m_ObjectHideFlags: 0
@@ -1628,13 +1629,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17222eaacd70a0648af84c0914fe5729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
   CurrentScore: 0
   FinalScore: 0
   _scoreText: {fileID: 1187293971}
   _finalScoreText: {fileID: 1230751296}
+  _gameOverPanel: {fileID: 1349121778}
   FadePanel: {fileID: 489339272}
   _fadeTime: 2
-  _gameOverPanel: {fileID: 1349121778}
   TimeTillGameOver: 1.5
 --- !u!1 &1230751294
 GameObject:
@@ -2355,7 +2357,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: b8803e3111ac24a5b958e1a50b843672, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

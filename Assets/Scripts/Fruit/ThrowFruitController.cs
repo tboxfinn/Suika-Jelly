@@ -39,6 +39,14 @@ public class ThrowFruitController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.State == GameState.GameOver)
+            return;
+
+        HandleInput();
+    }
+
+    public void HandleInput()
+    {
         if (PlayerInputManager.instance.pressInput && CanThrow)
         {
             SpriteIndex index = CurrentFruit.GetComponent<SpriteIndex>();
@@ -52,7 +60,6 @@ public class ThrowFruitController : MonoBehaviour
             CanThrow = false;
             PlayerInputManager.instance.pressInput = false;
         }
-        
     }
 
     public void SpawnAFruit(GameObject fruit)

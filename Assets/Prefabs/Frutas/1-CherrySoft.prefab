@@ -303,7 +303,7 @@ MonoBehaviour:
   SpriteMaterial: {fileID: 0}
   PixelPerMeter: 100
   SortingLayer: 
-  SortingOrder: 2
+  SortingOrder: 5
   Density: 3
   Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 1}
 --- !u!114 &2359675865475433501

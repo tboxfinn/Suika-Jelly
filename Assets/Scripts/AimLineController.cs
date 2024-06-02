@@ -20,6 +20,14 @@ public class AimLineController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.State == GameState.GameOver)
+            return;
+
+        HandleLinePosition();
+    }
+
+    public void HandleLinePosition()
+    {
         _x = _fruitThrowTransform.position.x;
 
         _topPos = _fruitThrowTransform.position.y;
