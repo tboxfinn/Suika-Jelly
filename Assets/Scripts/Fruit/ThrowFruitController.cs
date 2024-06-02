@@ -20,7 +20,7 @@ public class ThrowFruitController : MonoBehaviour
 
     private const float EXTRA_WIDTH = 0.03f;
 
-    public bool CanThrow = false;
+    public bool CanThrow = true;
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public class ThrowFruitController : MonoBehaviour
 
     public void HandleInput()
     {
-        if (PlayerInputManager.instance.pressInput && CanThrow)
+        if (PlayerInputManager.instance.isThrowPressed && CanThrow)
         {
             SpriteIndex index = CurrentFruit.GetComponent<SpriteIndex>();
             Quaternion rot = CurrentFruit.transform.rotation;
@@ -58,7 +58,7 @@ public class ThrowFruitController : MonoBehaviour
             Destroy(CurrentFruit);
 
             CanThrow = false;
-            PlayerInputManager.instance.pressInput = false;
+            PlayerInputManager.instance.isThrowPressed = false;
         }
     }
 

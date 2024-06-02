@@ -7,12 +7,16 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
 
+    public PlayerController playerController;
+
     PlayerControls playerControls;
 
     [Header("Player Movement Inputs")]
     public Vector2 movementInput;
-    public bool isHoldingInput = false;
-    public bool pressInput = false;
+    public bool holdInput = false;
+    public bool isThrowPressed = false;
+    public Vector2 _initialTouchPosition;
+    public Vector2 _currentTouchPosition;
 
     private void Awake()
     {
@@ -41,14 +45,52 @@ public class PlayerInputManager : MonoBehaviour
         if (playerControls == null)
         {
             playerControls = new PlayerControls();
+
             playerControls.PlayerMovement.Move.performed += i => movementInput = i.ReadValue<Vector2>();
 
-            //PRESS
-            playerControls.PlayerMovement.MousePress.performed += i => pressInput = true;
-
             //HOLDS
-            playerControls.PlayerMovement.Hold.performed += i => isHoldingInput = true;
-            playerControls.PlayerMovement.Hold.canceled += i => isHoldingInput = false;
+        // Holding the button
+        playerControls.PlayerActions.PressHold.performed += i => 
+        {
+            holdInput = true;
+            _initialTouchPosition = Pointer.current.position.ReadValue();
+            ThrowFruitController.instance.CanThrow = false;
+        };
+        // Releasing the button
+        playerControls.PlayerActions.PressHold.canceled += i => 
+        {
+            holdInput = false;
+            isThrowPressed = true;
+            _currentTouchPosition = Pointer.current.position.ReadValue();
+            ThrowFruitController.instance.CanThrow = true;
+        };
+
+        }
+
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
+    private void Update()
+    {
+        HandleAllInputs();
+    }
+
+    private void HandleAllInputs()
+    {
+        HandleHoldInput();
+    }
+
+    private void HandleHoldInput()
+    {
+        if (holdInput)
+        {
+            playerController.HandleMovement();
         }
     }
+
 }

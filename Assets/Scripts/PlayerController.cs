@@ -38,14 +38,13 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.State == GameState.GameOver)
             return;
             
-        HandleMovement();
     }
 
     public void HandleMovement()
     {
-        Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movementInput.x * _moveSpeed * Time.deltaTime, 0, 0);
+        Vector2 delta = PlayerInputManager.instance._currentTouchPosition - PlayerInputManager.instance._initialTouchPosition;
+        Vector3 newPosition = transform.position + new Vector3(delta.x * _moveSpeed * Time.deltaTime, 0, 0);
         newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);
-
         transform.position = newPosition;
     }
 
