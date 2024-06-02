@@ -47,7 +47,12 @@ public class ThrowFruitController : MonoBehaviour
 
     public void HandleInput()
     {
-        if (PlayerInputManager.instance.isThrowPressed && CanThrow)
+        // if (PlayerInputManager.instance.isHoldingInput)
+        // {
+        //     CanThrow = true;
+        // }
+
+        if (PlayerInputManager.instance.IsThrowPressed && CanThrow)
         {
             SpriteIndex index = CurrentFruit.GetComponent<SpriteIndex>();
             Quaternion rot = CurrentFruit.transform.rotation;
@@ -58,7 +63,7 @@ public class ThrowFruitController : MonoBehaviour
             Destroy(CurrentFruit);
 
             CanThrow = false;
-            PlayerInputManager.instance.isThrowPressed = false;
+            PlayerInputManager.instance.IsThrowPressed = false;
         }
     }
 

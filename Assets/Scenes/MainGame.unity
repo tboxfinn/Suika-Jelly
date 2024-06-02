@@ -1057,7 +1057,7 @@ MonoBehaviour:
   Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
-  CanThrow: 0
+  CanThrow: 1
 --- !u!1 &1117497924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,9 +1181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b8d103abc960c48983b5b9570fd739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 726309364}
+  playerController: {fileID: 0}
   movementInput: {x: 0, y: 0}
-  holdInput: 0
+  movement2Input: {x: 0, y: 0}
+  isHoldingInput: 0
+  IsThrowPressed: 0
   _initialTouchPosition: {x: 0, y: 0}
   _currentTouchPosition: {x: 0, y: 0}
 --- !u!1 &1166887641

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,9 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("Player Movement Inputs")]
     public Vector2 movementInput;
-    public bool holdInput = false;
-    public bool isThrowPressed = false;
+    public Vector2 movement2Input;
+    public bool isHoldingInput = false;
+    public bool IsThrowPressed = false;
     public Vector2 _initialTouchPosition;
     public Vector2 _currentTouchPosition;
 
@@ -30,6 +32,7 @@ public class PlayerInputManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        playerController = FindFirstObjectByType<PlayerController>();
     }
 
     private void Start()
@@ -48,49 +51,30 @@ public class PlayerInputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Move.performed += i => movementInput = i.ReadValue<Vector2>();
 
-            //HOLDS
-        // Holding the button
-        playerControls.PlayerActions.PressHold.performed += i => 
-        {
-            holdInput = true;
-            _initialTouchPosition = Pointer.current.position.ReadValue();
-            ThrowFruitController.instance.CanThrow = false;
-        };
-        // Releasing the button
-        playerControls.PlayerActions.PressHold.canceled += i => 
-        {
-            holdInput = false;
-            isThrowPressed = true;
-            _currentTouchPosition = Pointer.current.position.ReadValue();
-            ThrowFruitController.instance.CanThrow = true;
-        };
+            playerControls.PlayerMovement.Movement.performed += i => movement2Input = i.ReadValue<Vector2>();
+
+            playerControls.PlayerActions.PressHold.performed +=  HoldInputPerfomed;
+            playerControls.PlayerActions.PressHold.canceled += HoldInputCanceled;
 
         }
 
         playerControls.Enable();
     }
 
+    private void HoldInputPerfomed(InputAction.CallbackContext context)
+    {
+        isHoldingInput = true;
+    }
+
+    private void HoldInputCanceled(InputAction.CallbackContext context)
+    {
+        isHoldingInput = false;
+        IsThrowPressed = true;
+    }
+
     private void OnDisable()
     {
         playerControls.Disable();
-    }
-
-    private void Update()
-    {
-        HandleAllInputs();
-    }
-
-    private void HandleAllInputs()
-    {
-        HandleHoldInput();
-    }
-
-    private void HandleHoldInput()
-    {
-        if (holdInput)
-        {
-            playerController.HandleMovement();
-        }
     }
 
 }
