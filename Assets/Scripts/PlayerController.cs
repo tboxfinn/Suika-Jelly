@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private BoxCollider2D _boundaries;
     [SerializeField] private Transform _fruitThrowTransform;
 
@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
         Vector2 delta = PlayerInputManager.instance._currentTouchPosition - PlayerInputManager.instance._initialTouchPosition;
         Vector3 newPosition = transform.position + new Vector3(delta.x * _moveSpeed * Time.deltaTime, 0, 0);
         newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);
-        transform.position = newPosition;
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * _moveSpeed);
+        PlayerInputManager.instance._initialTouchPosition = PlayerInputManager.instance._currentTouchPosition;
     }
 
     public void ChangeBoundary(float extraWidth)
