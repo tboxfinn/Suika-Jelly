@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int CurrentScore { get; set; }
+    public int CurrentScore;
+    public int FinalScore;
 
     [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private Image _gameOverPanel;
+    [SerializeField] private TextMeshProUGUI _finalScoreText;
+    [SerializeField] private Image FadePanel;
     [SerializeField] private float _fadeTime = 2f;
+    [SerializeField] private GameObject _gameOverPanel;
 
     public float TimeTillGameOver = 1.5f;
 
@@ -34,8 +37,17 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
+        _gameOverPanel.SetActive(false);
         _scoreText.text = CurrentScore.ToString("0");
     }
+
+#region Recompensas
+        public void DuplicarScoreDespuesDeAnuncio()
+        {
+            FinalScore = CurrentScore * 2;
+            _finalScoreText.text = FinalScore.ToString("0");
+        }
+#endregion
 
     public void IncreaseScore(int amount)
     {
@@ -45,16 +57,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        StartCoroutine(ResetGame());
+        _gameOverPanel.SetActive(true);
     }
 
-    private IEnumerator ResetGame()
+    public void ResetGame()
     {
-        _gameOverPanel.gameObject.SetActive(true);
+        StartCoroutine(ResetGameCoroutine());
+    }
 
-        Color startColor = _gameOverPanel.color;
+    private IEnumerator ResetGameCoroutine()
+    {
+        FadePanel.gameObject.SetActive(true);
+
+        Color startColor = FadePanel.color;
         startColor.a = 0f;
-        _gameOverPanel.color = startColor;
+        FadePanel.color = startColor;
 
         float elapsedTime = 0f;
         while(elapsedTime < _fadeTime)
@@ -63,7 +80,7 @@ public class GameManager : MonoBehaviour
 
             float newAlpha = Mathf.Lerp(0f, 1f, (elapsedTime / _fadeTime));
             startColor.a = newAlpha;
-            _gameOverPanel.color = startColor;
+            FadePanel.color = startColor;
 
             yield return null;
         }
@@ -78,10 +95,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FadeGameIn()
     {
-        _gameOverPanel.gameObject.SetActive(true);
-        Color startColor = _gameOverPanel.color;
+        FadePanel.gameObject.SetActive(true);
+        Color startColor = FadePanel.color;
         startColor.a = 1f;
-        _gameOverPanel.color = startColor;
+        FadePanel.color = startColor;
 
         float elapsedTime = 0f;
         while(elapsedTime < _fadeTime)
@@ -90,11 +107,11 @@ public class GameManager : MonoBehaviour
 
             float newAlpha = Mathf.Lerp(1f, 0f, (elapsedTime / _fadeTime));
             startColor.a = newAlpha;
-            _gameOverPanel.color = startColor;
+            FadePanel.color = startColor;
 
             yield return null;
         }
 
-        _gameOverPanel.gameObject.SetActive(false);
+        FadePanel.gameObject.SetActive(false);
     }
 }
