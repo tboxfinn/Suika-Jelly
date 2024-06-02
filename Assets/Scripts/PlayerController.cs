@@ -38,18 +38,20 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.State == GameState.GameOver)
             return;
             
-        if (PlayerInputManager.instance.isHoldingInput)
-        {
-            HandleMovement();
-        }
+        HandleMovement();
+
     }
 
     public void HandleMovement()
     {
-        Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movement2Input.x * _moveSpeed * Time.deltaTime, 0, 0);
-        newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);
+        if (PlayerInputManager.instance.isHoldingInput)
+        {
+            Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movement2Input.x * _moveSpeed * Time.deltaTime, 0, 0);
+            newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);
 
-        transform.position = newPosition;
+            transform.position = newPosition;
+        }
+        
     }
 
     public void ChangeBoundary(float extraWidth)

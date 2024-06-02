@@ -61,6 +61,11 @@ public class PlayerInputManager : MonoBehaviour
         playerControls.Enable();
     }
 
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+    
     private void HoldInputPerfomed(InputAction.CallbackContext context)
     {
         isHoldingInput = true;
@@ -70,11 +75,6 @@ public class PlayerInputManager : MonoBehaviour
     {
         isHoldingInput = false;
         IsThrowPressed = true;
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
     }
 
 }
