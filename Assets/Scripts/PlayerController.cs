@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if (PlayerInputManager.instance.isHoldingInput)
         {
-            Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movement2Input.x * _moveSpeed * Time.deltaTime, 0, 0);
+            Vector3 newPosition = transform.position + new Vector3(PlayerInputManager.instance.movementInput.x * _moveSpeed * Time.deltaTime, 0, 0);
             newPosition.x = Mathf.Clamp(newPosition.x, _leftBound, _rightBound);
 
             transform.position = newPosition;

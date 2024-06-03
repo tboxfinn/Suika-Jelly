@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31915855552b94f478066a6ea3fe7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _moveSpeed: 1.5
   _boundaries: {fileID: 1458360064}
   _fruitThrowTransform: {fileID: 1692546504}
 --- !u!114 &726309365
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   _fruitTransform: {fileID: 1692546504}
   _parentAfterThrow: {fileID: 1218304342}
   _Selector: {fileID: 1218304343}
+  isFallingFruit: 0
   Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
@@ -1186,8 +1187,6 @@ MonoBehaviour:
   movement2Input: {x: 0, y: 0}
   isHoldingInput: 0
   IsThrowPressed: 0
-  _initialTouchPosition: {x: 0, y: 0}
-  _currentTouchPosition: {x: 0, y: 0}
 --- !u!1 &1166887641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,11 +1219,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2116341422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -494, y: 1328}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 401, y: -498}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1166887643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,7 +1432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -100}
+  m_AnchoredPosition: {x: 52, y: -271}
   m_SizeDelta: {x: 585.473, y: 231.013}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1187293971
@@ -1492,7 +1491,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 300
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

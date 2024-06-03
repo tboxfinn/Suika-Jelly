@@ -17,8 +17,6 @@ public class PlayerInputManager : MonoBehaviour
     public Vector2 movement2Input;
     public bool isHoldingInput = false;
     public bool IsThrowPressed = false;
-    public Vector2 _initialTouchPosition;
-    public Vector2 _currentTouchPosition;
 
     private void Awake()
     {
@@ -69,14 +67,13 @@ public class PlayerInputManager : MonoBehaviour
     private void HoldInputPerfomed(InputAction.CallbackContext context)
     {
         isHoldingInput = true;
-        _initialTouchPosition = movementInput;
     }
 
     private void HoldInputCanceled(InputAction.CallbackContext context)
     {
         isHoldingInput = false;
+        
         IsThrowPressed = true;
-        _currentTouchPosition = movementInput;
     }
 
 }
