@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 break;
+            case GameState.Paused:
+                break;
             default:
                 throw new System.ArgumentOutOfRangeException();
         }
@@ -163,5 +165,6 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Playing,
-    GameOver
+    GameOver,
+    Paused,
 }
