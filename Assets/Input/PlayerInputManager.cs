@@ -69,12 +69,14 @@ public class PlayerInputManager : MonoBehaviour
     private void HoldInputPerfomed(InputAction.CallbackContext context)
     {
         isHoldingInput = true;
+        _initialTouchPosition = movementInput;
     }
 
     private void HoldInputCanceled(InputAction.CallbackContext context)
     {
         isHoldingInput = false;
         IsThrowPressed = true;
+        _currentTouchPosition = movementInput;
     }
 
 }

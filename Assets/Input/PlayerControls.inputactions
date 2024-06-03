@@ -116,15 +116,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "MouseHold",
-                    "type": "Button",
-                    "id": "c1902d52-262e-4303-9b63-65bf15951055",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [

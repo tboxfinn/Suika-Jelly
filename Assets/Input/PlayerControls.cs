@@ -138,15 +138,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""MouseHold"",
-                    ""type"": ""Button"",
-                    ""id"": ""c1902d52-262e-4303-9b63-65bf15951055"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -184,7 +175,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_PressHold = m_PlayerActions.FindAction("PressHold", throwIfNotFound: true);
-        m_PlayerActions_MouseHold = m_PlayerActions.FindAction("MouseHold", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,13 +291,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
     private readonly InputAction m_PlayerActions_PressHold;
-    private readonly InputAction m_PlayerActions_MouseHold;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @PressHold => m_Wrapper.m_PlayerActions_PressHold;
-        public InputAction @MouseHold => m_Wrapper.m_PlayerActions_MouseHold;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,9 +308,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PressHold.started += instance.OnPressHold;
             @PressHold.performed += instance.OnPressHold;
             @PressHold.canceled += instance.OnPressHold;
-            @MouseHold.started += instance.OnMouseHold;
-            @MouseHold.performed += instance.OnMouseHold;
-            @MouseHold.canceled += instance.OnMouseHold;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -330,9 +315,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PressHold.started -= instance.OnPressHold;
             @PressHold.performed -= instance.OnPressHold;
             @PressHold.canceled -= instance.OnPressHold;
-            @MouseHold.started -= instance.OnMouseHold;
-            @MouseHold.performed -= instance.OnMouseHold;
-            @MouseHold.canceled -= instance.OnMouseHold;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -358,6 +340,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnPressHold(InputAction.CallbackContext context);
-        void OnMouseHold(InputAction.CallbackContext context);
     }
 }
