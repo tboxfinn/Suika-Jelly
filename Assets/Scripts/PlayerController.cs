@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.State == GameState.GameOver)
             return;
+
+        if (GameManager.instance.State == GameState.Paused)
+            return;
             
         HandleMovement();
 

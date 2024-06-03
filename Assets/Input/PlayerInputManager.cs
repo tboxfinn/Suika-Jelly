@@ -69,12 +69,30 @@ public class PlayerInputManager : MonoBehaviour
     
     private void HoldInputPerfomed(InputAction.CallbackContext context)
     {
+        if (GameManager.instance.State == GameState.GameOver)
+            return;
+
+        if (GameManager.instance.State == GameState.Paused)
+        {
+            IsThrowPressed = false;
+            return;
+        }
+
         // Add the input event to the queue
         inputQueue.Enqueue(() => isHoldingInput = true);
     }
 
     private void HoldInputCanceled(InputAction.CallbackContext context)
     {
+        if (GameManager.instance.State == GameState.GameOver)
+            return;
+
+        if (GameManager.instance.State == GameState.Paused)
+        {
+            IsThrowPressed = false;
+            return;
+        }
+            
         // Add the input event to the queue
         inputQueue.Enqueue(() =>
         {

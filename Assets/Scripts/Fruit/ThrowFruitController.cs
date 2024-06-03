@@ -42,6 +42,9 @@ public class ThrowFruitController : MonoBehaviour
         if (GameManager.instance.State == GameState.GameOver)
             return;
 
+        if (GameManager.instance.State == GameState.Paused)
+            return;
+
         HandleInput();
     }
 

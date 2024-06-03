@@ -106,6 +106,16 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.GameOver);
     }
 
+    public void PauseGame()
+    {
+        UpdateGameState(GameState.Paused);
+    }
+
+    public void ResumeGame()
+    {
+        UpdateGameState(GameState.Playing);
+    }
+
     public void ResetGame()
     {
         StartCoroutine(ResetGameCoroutine());
