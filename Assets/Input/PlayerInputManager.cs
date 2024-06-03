@@ -18,6 +18,9 @@ public class PlayerInputManager : MonoBehaviour
     public bool isHoldingInput = false;
     public bool IsThrowPressed = false;
 
+    // Add a queue to store input events
+    Queue<Action> inputQueue = new Queue<Action>();
+
     private void Awake()
     {
         if (instance == null)
@@ -66,14 +69,27 @@ public class PlayerInputManager : MonoBehaviour
     
     private void HoldInputPerfomed(InputAction.CallbackContext context)
     {
-        isHoldingInput = true;
+        // Add the input event to the queue
+        inputQueue.Enqueue(() => isHoldingInput = true);
     }
 
     private void HoldInputCanceled(InputAction.CallbackContext context)
     {
-        isHoldingInput = false;
-        
-        IsThrowPressed = true;
+        // Add the input event to the queue
+        inputQueue.Enqueue(() =>
+        {
+            isHoldingInput = false;
+            IsThrowPressed = true;
+        });
+    }
+
+    private void Update()
+    {
+        // Process one input event per frame
+        if (inputQueue.Count > 0)
+        {
+            inputQueue.Dequeue().Invoke();
+        }
     }
 
 }
