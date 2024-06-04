@@ -5,5 +5,5 @@ using UnityEngine;
 public enum TipoRecompensaEnum
 {
     DuplicarScore = 0,
-    OtraOportunidad = 1,
+    Reintentar = 1,
 }

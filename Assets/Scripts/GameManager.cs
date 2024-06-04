@@ -43,7 +43,34 @@ public class GameManager : MonoBehaviour
 
     private void GameManagerOnStateChanged(GameState state)
     {
-        _gameOverPanel.SetActive(state == GameState.GameOver);
+        Debug.Log("Game State Changed to: " + state);
+    }
+
+    private void Update()
+    {
+        if (State == GameState.Playing)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UpdateGameState(GameState.Paused);
+            }
+
+            _gameOverPanel.SetActive(false);
+        }
+
+        if (State == GameState.Paused)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UpdateGameState(GameState.Playing);
+            }
+        }
+
+        if (State == GameState.GameOver)
+        {
+            _gameOverPanel.SetActive(true);
+        }
+        
     }
 
     private void Awake()
@@ -119,6 +146,18 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         StartCoroutine(ResetGameCoroutine());
+    }
+
+    public void EliminarMitadDeFrutas()
+    {
+        GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruta");
+        int half = fruits.Length / 2;
+        for (int i = 0; i < half; i++)
+        {
+            Destroy(fruits[i]);
+        }
+
+        UpdateGameState(GameState.Playing);
     }
 
     private IEnumerator ResetGameCoroutine()

@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 8435694108428960889}
   m_Layer: 6
   m_Name: 2-StrawberrySoft
-  m_TagString: Untagged
+  m_TagString: Fruta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   CollidersOffset: 1
   PhysicsMaterial: {fileID: 0}
   AutoMass: 0
-  Mass: 1
+  Mass: 1.45
   LinearDrag: 0
   AngularDrag: 0.05
   CollidersRadius: 0.32
@@ -443,7 +443,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2153660806132313430
 MeshFilter:

@@ -8,4 +8,9 @@ public class TestAnuncios : MonoBehaviour
     {
         ControladorAnuncios.instance.MostrarAnuncio(TipoRecompensaEnum.DuplicarScore);
     }
+
+    public void AnuncioTryAgain()
+    {
+        ControladorAnuncios.instance.MostrarAnuncio(TipoRecompensaEnum.Reintentar);
+    }
 }

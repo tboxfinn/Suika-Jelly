@@ -27,10 +27,6 @@ public class PlayerInputManager : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
 
         DontDestroyOnLoad(gameObject);
         playerController = FindFirstObjectByType<PlayerController>();

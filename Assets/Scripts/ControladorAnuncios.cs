@@ -112,8 +112,8 @@ public class ControladorAnuncios : MonoBehaviour, IUnityAdsInitializationListene
             case TipoRecompensaEnum.DuplicarScore:
                 FindFirstObjectByType<GameManager>().DuplicarScoreDespuesDeAnuncio();
                 break;
-            case TipoRecompensaEnum.OtraOportunidad:
-                FindFirstObjectByType<GameManager>().ResetGame();
+            case TipoRecompensaEnum.Reintentar:
+                FindFirstObjectByType<GameManager>().EliminarMitadDeFrutas();
                 break;
         }
     }
