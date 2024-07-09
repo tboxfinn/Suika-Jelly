@@ -888,14 +888,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480494947840240f7a242971a416d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  Scale: {x: 1, y: 1}
+  Sprite: {fileID: 21300000, guid: 853fd5ee692b04fb6b0abc4d35b0999e, type: 3}
+  Scale: {x: 0.5, y: 0.5}
   SpriteMaterial: {fileID: 0}
   PixelPerMeter: 100
   SortingLayer: 
   SortingOrder: 5
   Density: 3
-  Color: {r: 0.6392157, g: 0.21960786, b: 0.9058824, a: 1}
+  Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1265220563210848517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
   CollidersOffset: 1
   PhysicsMaterial: {fileID: 0}
   AutoMass: 0
-  Mass: 1.4
+  Mass: 1.5
   LinearDrag: 0
   AngularDrag: 0.05
   CollidersRadius: 0.32

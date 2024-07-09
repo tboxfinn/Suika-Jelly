@@ -298,14 +298,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480494947840240f7a242971a416d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  Scale: {x: 1, y: 1}
+  Sprite: {fileID: 21300000, guid: bb1e0545a03364c62b06c7c22dc4b741, type: 3}
+  Scale: {x: 0.5, y: 0.5}
   SpriteMaterial: {fileID: 0}
   PixelPerMeter: 100
   SortingLayer: 
   SortingOrder: 5
   Density: 3
-  Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 1}
+  Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2359675865475433501
 MonoBehaviour:
   m_ObjectHideFlags: 0
