@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31915855552b94f478066a6ea3fe7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.2
+  _moveSpeed: 0.5
   _boundaries: {fileID: 1458360064}
   _fruitThrowTransform: {fileID: 1692546504}
 --- !u!114 &726309365
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 300
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3282,7 +3282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1344945163
 RectTransform:
   m_ObjectHideFlags: 0
