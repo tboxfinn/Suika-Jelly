@@ -16,6 +16,13 @@ public class FruitCombiner : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Verifica si alguna de las frutas tiene como padre al jugador
+        if (transform.parent != null && transform.parent.CompareTag("Player") ||
+            collision.transform.parent != null && collision.transform.parent.CompareTag("Player"))
+        {
+            return; // Si alguna fruta tiene como padre al jugador, no continúa con la combinación
+        }
+
         if (collision.gameObject.layer == _layerIndex)
         {
             FruitInfo info = collision.gameObject.GetComponent<FruitInfo>();

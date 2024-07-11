@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int FinalScore;
 
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _pauseScoreText;
     [SerializeField] private TextMeshProUGUI _finalScoreText;
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private Image FadePanel;
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
 
         _gameOverPanel.SetActive(false);
         _scoreText.text = CurrentScore.ToString("0");
+        _pauseScoreText.text = CurrentScore.ToString("0");
         OnGameStateChanged += GameManagerOnStateChanged;
        
     }
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
         CurrentScore += amount;
         FinalScore = CurrentScore;
         _scoreText.text = CurrentScore.ToString("0");
+        _pauseScoreText.text = CurrentScore.ToString("0");
         _finalScoreText.text = FinalScore.ToString("0");
     }
 
@@ -151,12 +154,18 @@ public class GameManager : MonoBehaviour
     public void EliminarMitadDeFrutas()
     {
         GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruta");
-        int half = fruits.Length / 2;
-        for (int i = 0; i < half; i++)
+        int toDestroy = Mathf.FloorToInt(fruits.Length * 0.75f); // Calcula el 75% de las frutas, redondeado hacia abajo
+        for (int i = 0; i < toDestroy; i++)
         {
             Destroy(fruits[i]);
         }
 
+        StartCoroutine(WaitAndChangeGameStateToPlaying());
+    }
+
+    private IEnumerator WaitAndChangeGameStateToPlaying()
+    {
+        yield return new WaitForSeconds(1); // Espera por 1 segundo
         UpdateGameState(GameState.Playing);
     }
 
