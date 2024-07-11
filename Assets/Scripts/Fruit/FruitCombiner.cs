@@ -5,8 +5,8 @@ using UnityEngine;
 public class FruitCombiner : MonoBehaviour
 {
     private int _layerIndex;
-
     private FruitInfo _info;
+    [SerializeField] private AudioSource _audioSource; // Referencia al componente AudioSource
 
     private void Awake()
     {
@@ -37,12 +37,17 @@ public class FruitCombiner : MonoBehaviour
                     {
                         GameManager.instance.IncreaseScore(_info.PointsWhenAnnihilated);
 
+                        // Reproduce el sonido de combinación
+                        if (_audioSource != null && _audioSource.clip != null)
+                        {
+                            _audioSource.Play();
+                        }
+
                         if (_info.FruitIndex == FruitSelector.instance.Fruits.Length -1)
                         {
                             Destroy(collision.gameObject);
                             Destroy(gameObject);
                         }
-
                         else
                         {
                             Vector3 middlePosition = (transform.position + collision.transform.position) / 2f;
