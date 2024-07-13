@@ -1,0 +1,8 @@
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/CMakeFiles/edit_cache.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/CMakeFiles/rebuild_cache.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/GameActivity/CMakeFiles/game.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+X:/Documentos/GitHub/Suika Jelly/.utmp/RelWithDebInfo/6k724l2l/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
