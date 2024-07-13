@@ -893,7 +893,7 @@ MonoBehaviour:
   Scale: {x: 0.5, y: 0.5}
   SpriteMaterial: {fileID: 0}
   PixelPerMeter: 100
-  SortingLayer: 
+  SortingLayer: Frutas
   SortingOrder: 5
   Density: 3
   Color: {r: 1, g: 1, b: 1, a: 1}
